@@ -34,4 +34,16 @@ char *handle_path(char **args);
 
 /* custom functions */
 int print_prompt(void);
+void signal_handler(int n);
+
+
+/* custom functions in helper files */
+void *_realloc(void *ptr, unsigned int new_size);
+char *_strdup(const char *str);
+
+/* sub custom functions */
+
+*_memcpy(char *dest, char *src, unsigned int n);
+*_strcpy(char *dest, const char *src);
+
 #endif
