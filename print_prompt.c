@@ -10,7 +10,7 @@ int print_prompt(void)
 {
 	int interactive_mode = 0;
 
-	if (isatty(STIN_FILENO) == 1 && isatty(STDOUT_FILENO) ==1)
+	if (isatty(STDIN_FILENO) == 1 && isatty(STDOUT_FILENO) == 1)
 		interactive_mode = 1;
 
 	if (interactive_mode == 1)

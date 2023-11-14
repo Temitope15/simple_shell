@@ -16,7 +16,7 @@
 #define MAX_INPUT_LENGTH 1024
 #define MAX_COMMAND_LENGTH 100
 
-extern __signalhandler_t signal(int __signal, __signalhandler_t __handler);
+extern __sighandler_t signal(int __signal, __sighandler_t __handler);
 extern char **environ;
 
 void loop(void);

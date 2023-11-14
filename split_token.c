@@ -2,9 +2,7 @@
 
 /**
  * split_tokens - A fumction that splits input into tokens
- *
  * @str: the input string
- *
  * Return: the array of tokens
  */
 
@@ -20,9 +18,8 @@ char **split_tokens(char *str)
 	tokens = malloc(buffsize * sizeof(char *));
 
 	if (tokens == NULL)
-	{
+
 		exit(EXIT_FAILURE);
-	}
 
 	token = strtok(str, DELIMITER);
 
@@ -36,9 +33,8 @@ char **split_tokens(char *str)
 			buffsize += BUFF_SIZE;
 			tokens = _realloc(tokens, buffsize * sizeof(char *));
 			if (tokens == NULL)
-			{
+
 				exit(EXIT_FAILURE);
-			}
 		}
 
 		token = strtok(NULL, DELIMITER);
