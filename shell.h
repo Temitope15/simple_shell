@@ -43,7 +43,8 @@ char *_strdup(const char *str);
 
 /* sub custom functions */
 
-*_memcpy(char *dest, char *src, unsigned int n);
-*_strcpy(char *dest, const char *src);
+void *_memcpy(char *dest, const void *src, size_t n);
+char *_strcpy(char *dest, const char *src);
+size_t _strlen(const char *s);
 
 #endif

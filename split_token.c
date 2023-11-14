@@ -30,5 +30,26 @@ char **split_tokens(char *str)
 	{
 		tokens[i] = _strdup(token);
 		i++;
+
+		if (i >= buffsize)
+		{
+			buffsize += BUFF_SIZE;
+			tokens = _realloc(tokens, buffsize * sizeof(char *));
+			if (tokens == NULL)
+			{
+				exit(EXIT_FAILURE);
+			}
+		}
+
+		token = strtok(NULL, DELIMITER);
 	}
+
+	if (i == 0)
+	{
+		free(tokens);
+		return (NULL);
+	}
+
+	tokens[i] = NULL;
+	return (tokens);
 }

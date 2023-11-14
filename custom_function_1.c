@@ -29,7 +29,7 @@ void *_realloc(void *ptr, unsigned int new_size)
 
 	if (ptr != NULL)
 	{
-		_memcpy(new_ptr, old_size < new_size ? old_size : new_size);
+		_memcpy(new_ptr, ptr, old_size < new_size ? old_size : new_size);
 		free(ptr);
 	}
 
@@ -56,7 +56,7 @@ char *_strdup(const char *str)
 		return (NULL);
 	}
 
-	len = strlen(str);
+	len = _strlen(str);
 	new_str = (char *) malloc((len + 1) * sizeof(char));
 
 	if (new_str == NULL)

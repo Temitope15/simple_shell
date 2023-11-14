@@ -25,5 +25,15 @@ int main(int argc, char **argv)
 		mode = print_prompt();
 		input = get_input();
 		commands = split_tokens(input);
+
+		if (!cmd || !*cmd || **cmd == '\0')
+		{
+			free(input);
+			line_num++;
+
+			continue;
+		}
+		free(input);
+		status = execute_commands(cmd, line_num, argv[0]);
 	}
 }
