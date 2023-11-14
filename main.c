@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
 	char *input = NULL;
-	char **cmd = NULL;
+	char **commands = NULL;
 	int status, line_num, mode;
 
 	status = 1;
@@ -24,16 +24,24 @@ int main(int argc, char **argv)
 	{
 		mode = print_prompt();
 		input = get_input();
+
+		if (!input)
+		{
+			perror("Error reading input");
+			continue;
+		}
+
 		commands = split_tokens(input);
 
-		if (!cmd || !*cmd || **cmd == '\0')
+		if (!commands || !*commands || **commands == '\0')
 		{
 			free(input);
 			line_num++;
 
 			continue;
 		}
+
 		free(input);
-		status = execute_commands(cmd, line_num, argv[0]);
+		status = execute_commands(commands, line_num, argv[0]);
 	}
 }

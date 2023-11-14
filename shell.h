@@ -16,14 +16,15 @@
 #define MAX_INPUT_LENGTH 1024
 #define MAX_COMMAND_LENGTH 100
 
-extern __sighandler_t signal(int __signal, __sighandler_t __handler);
+typedef void (*sighandler_t)(int);
+
 extern char **environ;
 
 void loop(void);
 char *get_input(void);
 char **split_tokens(char *input);
 int exe_cmds(char **args, int line_num, char *prog_name);
-void kpsh_esit(char **args);
+void kpsh_exit(char **args);
 int get_num_args(char **args);
 void change_dir(char **args);
 void set_env(char **args);
