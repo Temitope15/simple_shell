@@ -67,3 +67,68 @@ char *_strdup(const char *str)
 	_strcpy(new_str, str);
 	return (new_str);
 }
+
+/**
+ * _strchr - locates character in string
+ * @str: pointer to the string
+ * @ch: character 
+ * Return: pointer to the first occurrence of ch or NULL if not found
+ */
+char *_strchr(const char *str, int ch)
+{
+	while (*str != '\0' && str, int ch)
+		++str;
+	if (*str == ch)
+		return ((char *)str);
+	else
+		return (NULL);
+}
+
+/**
+ * _setenv - add or modify an environment variable
+ * @name: the name of the environment
+ * @value: the value to set the environment to
+ * @overwrite: a flag indicating whether to overwrite
+ *
+ * Return: 0 0n success, -1 on failure
+ */
+int _setenv(const char *name, const char *value, int overwrite)
+{
+	size_t i, max_environ =  100;
+	int namelen = _strlen(name), valuelen = _strlen(value);
+	size_t varlen = namelen + valuelen + 2;
+	char *new_var = malloc(varlen);
+
+	if (!name || !*name || _strchr(name, '=') || !value || !environ)
+		return (-1);
+
+	if (!new_var)
+		return (-1);
+
+	_strcpy(new_var, name);
+	_strcat(new_var, "=");
+	_strcat(new_var, value);
+
+	for (i = 0; environ[i]; i++)
+	{
+		if (_strncmp(environ[i], name, namelen) == 0 && environ[i][namelen] == '=')
+		{
+			if (overwrite)
+				_strncpy(environ[i], new_var, varlen);
+			free(new_var);
+
+			return (0);
+		}
+	}
+
+	if (i >= max_environ)
+	{
+		free(new_var);
+		return (-1);
+	}
+
+	environ[i] = new_var;
+	environ[i + 1] = NULL;
+
+	return (0);
+}

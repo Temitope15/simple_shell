@@ -43,5 +43,18 @@ int main(int argc, char **argv)
 
 		free(input);
 		status = execute_commands(commands, line_num, argv[0]);
+
+		if (status == 127 && mode == 0)
+			break;
+		free_bufs(commands);
+		line_num++;
 	}
+
+	if (status == 127)
+	{
+		free_bufs(commands);
+		exit(127);
+	}
+
+	return (0);
 }
